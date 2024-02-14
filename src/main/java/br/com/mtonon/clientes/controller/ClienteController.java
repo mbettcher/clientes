@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mtonon.clientes.model.entity.Cliente;
 import br.com.mtonon.clientes.service.ClienteService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -24,7 +25,7 @@ public class ClienteController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente salvar(@RequestBody Cliente cliente) {
+	public Cliente salvar(@Valid @RequestBody Cliente cliente) {
 		return clienteService.salvarCliente(cliente);
 	}
 	
@@ -40,6 +41,7 @@ public class ClienteController {
 	}
 	
 	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
 		this.clienteService.atualizarCliente(id, cliente);
 	}

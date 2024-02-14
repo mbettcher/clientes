@@ -20,7 +20,7 @@ public class ClientesApplication {
 		return args -> {
 			Cliente cliente = Cliente.builder()
 								.nome("Cliente Teste")
-								.cpf("11111111111")
+								.cpf("88539489066")
 								.dataCadastro(LocalDate.now())
 								.build();
 			repo.save(cliente);
