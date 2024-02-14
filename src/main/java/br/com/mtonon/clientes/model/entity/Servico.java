@@ -1,12 +1,14 @@
 package br.com.mtonon.clientes.model.entity;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -23,19 +25,20 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 @Builder
-public class Cliente {
+public class Servico {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false, length = 150)
-	private String nome;
+	@Column(nullable = false, length = 180)
+	private String descricao;
 	
-	@Column(nullable = false, length = 11)
-	private String cpf;
+	@Column
+	private BigDecimal valor;
 	
-	@Column(name = "data_cadastro")
-	private LocalDate dataCadastro;
+	@ManyToOne
+	@JoinColumn(name = "id_cliente")
+	private Cliente cliente;
 
 }
