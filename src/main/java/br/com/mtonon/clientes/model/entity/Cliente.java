@@ -2,7 +2,6 @@ package br.com.mtonon.clientes.model.entity;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
