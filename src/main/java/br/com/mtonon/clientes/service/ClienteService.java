@@ -3,7 +3,9 @@ package br.com.mtonon.clientes.service;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.mtonon.clientes.model.entity.Cliente;
 import br.com.mtonon.clientes.repository.ClienteRepository;
@@ -17,5 +19,11 @@ public class ClienteService {
 	public Cliente salvarCliente(Cliente cliente) {
 		cliente.setDataCadastro(LocalDate.now());
 		return this.clienteRepository.save(cliente);
+	}
+	
+	public Cliente buscarPorId(Long id) {
+		return this.clienteRepository.findById(id).orElseThrow(
+					() -> new ResponseStatusException(HttpStatus.NOT_FOUND)
+				);
 	}
 }
