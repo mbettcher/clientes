@@ -23,7 +23,7 @@ public class ClienteService {
 	
 	public Cliente buscarPorId(Long id) {
 		return this.clienteRepository.findById(id).orElseThrow(
-					() -> new ResponseStatusException(HttpStatus.NOT_FOUND)
+					() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não localizado!")
 				);
 	}
 	
@@ -35,7 +35,7 @@ public class ClienteService {
 				return Void.TYPE;
 			})
 			.orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND)
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não localizado!")
 			);
 	}
 	
@@ -47,7 +47,7 @@ public class ClienteService {
 			return this.clienteRepository.save(clienteOld);
 		})
 		.orElseThrow(
-			() -> new ResponseStatusException(HttpStatus.NOT_FOUND)
+			() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não localizado!")
 		);
 	}
 	
