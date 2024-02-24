@@ -1,6 +1,7 @@
 package br.com.mtonon.clientes.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,10 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
+	
+	public List<Cliente> listarTodos() {
+		return this.clienteRepository.findAll();
+	}
 	
 	public Cliente salvarCliente(Cliente cliente) {
 		cliente.setDataCadastro(LocalDate.now());
