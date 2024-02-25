@@ -55,4 +55,9 @@ public class ClienteController {
 	public void atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
 		this.clienteService.atualizarCliente(id, cliente);
 	}
+	
+	@GetMapping("/verificar/{cpf}")
+	public Boolean clienteJaCadastrado(@PathVariable String cpf) {	
+		return this.clienteService.localizarPorCpf(cpf);
+	}
 }

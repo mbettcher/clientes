@@ -60,4 +60,13 @@ public class ClienteService {
 		clienteOld.setNome(clienteNew.getNome());
 		clienteOld.setCpf(clienteNew.getCpf());
 	}
+	
+	public Boolean localizarPorCpf(String cpf) {
+		List<Cliente> clientes = this.clienteRepository.findByCpf(cpf);
+		if(clientes.size() > 0) {
+			return Boolean.TRUE;
+		}else {
+			return Boolean.FALSE;
+		}
+	}
 }
