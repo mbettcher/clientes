@@ -1,6 +1,7 @@
 package br.com.mtonon.clientes.model.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +26,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 @Builder
-public class Servico {
+public class ServicoPrestado {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +37,9 @@ public class Servico {
 	
 	@Column
 	private BigDecimal valor;
+	
+	@Column
+	private LocalDate data;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
