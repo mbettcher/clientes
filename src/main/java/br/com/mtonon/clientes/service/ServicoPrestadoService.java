@@ -45,7 +45,15 @@ public class ServicoPrestadoService {
 		return this.repository.findAll();
 	}
 	
+	
+	
 	public List<ServicoPrestado> listarPorCliente(Cliente cliente) {
 		return this.repository.findByCliente(cliente);
+	}
+	
+	
+	
+	public List<ServicoPrestado> findByNomeClienteAndMes(String nome, Integer mes){
+		return this.repository.findByNomeClienteAndMes( "%"+nome+"%", mes);
 	}
 }
